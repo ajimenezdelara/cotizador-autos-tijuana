@@ -1,25 +1,21 @@
 name: Cotizador Automático de Autos
+
 on:
   schedule:
     - cron: '0 0 * * *'  # Ejecutar a las 00:00 UTC (18:00 Tijuana)
   workflow_dispatch:
 
-
 jobs:
 
   cotizar:
     runs-on: ubuntu-latest
-container:
-  image: node:24
-
     
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-        node-version: '24'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
