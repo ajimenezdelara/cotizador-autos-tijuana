@@ -12,7 +12,8 @@ jobs:
   cotizar:
     runs-on: ubuntu-latest
 container:
-  image: node:24
+  image: ghcr.io/ajimenezdelara/cotizador-autos-tijuana/dockerfile:latest
+
 
     
     steps:
