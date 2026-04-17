@@ -1,11 +1,9 @@
 name: Cotizador Automático de Autos
-
 on:
-
-
   schedule:
     - cron: '0 0 * * *'  # Ejecutar a las 00:00 UTC (18:00 Tijuana)
   workflow_dispatch:
+
 
 jobs:
 
