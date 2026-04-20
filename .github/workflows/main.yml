@@ -33,5 +33,3 @@ jobs:
       env:
         EMAIL_USUARIO: ${{ secrets.EMAIL_USUARIO }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-
-      
