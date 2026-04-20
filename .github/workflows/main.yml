@@ -1,12 +1,9 @@
-name: Cotizar
+name: Cotizador Diario de Autos
 
 on:
   schedule:
-    - cron: '0 14 * * 1-5'  # Se ejecuta de lunes a viernes a las 2 PM UTC
-  workflow_dispatch:  # Permite ejecutar manualmente el workflow
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    - cron: '0 13 * * *'  # 06:00 AM Tijuana = 13:00 UTC
+  workflow_dispatch:
 
 jobs:
   cotizar:
@@ -21,18 +18,20 @@ jobs:
       with:
         python-version: '3.9'
 
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run cotizar script
+    - name: Run cotizador
       run: python main.py
       env:
         EMAIL_USUARIO: ${{ secrets.EMAIL_USUARIO }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
 
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run Cotizador
       run: python main.py
